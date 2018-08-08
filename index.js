@@ -1,14 +1,16 @@
 //Function 1
 
-var string = [];
+var array = [];
 function dwarfRollCall(dwarves) {
   for (let i = 0; i < dwarves.length; i++) {
-    string.push(`${i+1}. ${dwarves[i]}`);
+    array.push(`${i+1}. ${dwarves[i]}`);
   } 
-  var actualString = string.join(" ");
+  var actualString = array.join(" ");
+
   return `${actualString} `;   // needed an extra space
-} 
-                            
+}  
+
+
 /* Test 1 
 describe("dwarfRollCall", function() {
       it("prints out dwarfs in a numbered list based on an array'", function() {
@@ -20,8 +22,23 @@ describe("dwarfRollCall", function() {
 // Function 2
 
 function summonCaptainPlanet(planeteerCalls){
-  return planeteerCalls.map( c => c.toUpperCase().concat("!"))
+  return planeteerCalls.map( c => c.toUpperCase().concat("!"));
 }
+
+// OR    c.toUpperCase() + "!");
+
+/* ALTERNATIVE WHILE LOOP VERSION
+
+function summonCaptainPlanet(planeteerCalls){
+  var arr = []
+  let i = planeteerCalls.length - 1;
+  while (i >= 0){
+    arr.push(planeteerCalls[i].toUpperCase() + "!")
+    i--;
+  }
+  return arr;
+}                                 */
+
 
 /* Test 2
 describe("summonCaptainPlanet", function() {
@@ -43,11 +60,9 @@ describe("summonCaptainPlanet", function() {
 function longPlaneteerCalls(words) {
   for (let i =0; i < words.length; i++) {
     if (words[i].length > 4) {
-      return true
-    } else {
-      return false
-    }
-  }
+      return true;
+    } 
+  }  return false;
 }
 
 /* Test 3 
@@ -63,8 +78,20 @@ describe("longPlaneteerCalls", function() {
       });
 });   */
 
-/*
-// Function 4 - Working code, but hardcoded 
+
+// Function 4 
+let cheeses = ["cheddar", "gouda", "camembert"];
+
+function findTheCheese(foods) {
+  for (let i=0; i < foods.length; i++) {
+    if (cheeses.includes(foods[i]))  {
+      return foods[i]; 
+    }
+  } return "no cheese!";
+}
+ 
+/*  Function 4 - Working code, but hardcoded 
+
 function findTheCheese (foods) {
   for (let i=0; i < foods.length; i++) {
     if (foods[i] === "cheddar")  {
@@ -76,33 +103,23 @@ function findTheCheese (foods) {
     } 
   } 
   return "no cheese!"
-}                                      
-*/ 
+}    
+*/
+
+
+
 // how would I return all the values 
 // in the foods array and not just the first one which matched
 
 /******  EXAMPLE CODE - PLAY WITH THIS - learn .filter() and .indexOf()   ********
 
-var fullWordList = ['1','2','3','4','5'];
-var wordsToRemove = ['1','2','3'];
-
-var newList = fullWordList.filter(function(x){
-   return wordsToRemove.indexOf(x) >= 0;
-})
-console.log(newList);   OR JUST  newlist;     *********       */ 
-
 let cheeses = ["cheddar", "gouda", "camembert"];
 let foods = ["gooby", "camembert", "cheddar"];
 
+var list = cheeses.filter(function(x){
+   return foods.indexOf(x) >= 0;
+})
 
-function findTheCheese(foods) {
-  var matchingFood;
-  for (let i=0; i < foods.length; i++) {
-    if (cheeses.includes(foods[i]))  {
-      matchingFood = foods[i]; 
-      return matchingFood; 
-    }
-  } // if (matchingFood === undefined) {} - not needed 
-  return "no cheese!"
-}
- 
+list;                 *********       */ 
+
+
